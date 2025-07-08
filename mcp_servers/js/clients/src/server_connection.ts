@@ -39,7 +39,7 @@ export async function initializeAlllMCP() {
                 
                 // Add AIRTABLE_API_KEY for AIRTABLE-MCP server
                 if (server.server_name === "AIRTABLE-MCP") {
-                    env.AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY || "your_api_key_here";
+                    env.AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY || "patzcFy4xbWDmfCUP.40fa99f37fbda27b2765743e44b0c5bc2c11e174411814e66503eea46b7d8da4";
                 }
                 
                 const transport = new StdioClientTransport({
