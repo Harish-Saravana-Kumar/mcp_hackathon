@@ -1,4 +1,3 @@
-
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
 import { ServersConfig, ClientsConfig } from "./client_and_server_config.js";
@@ -27,9 +26,26 @@ export async function initializeAlllMCP() {
                     name: `${server.server_name}_CLIENT`,
                     version: "1.0.0"
                 });
+                
+                // Prepare environment variables for the server
+                const env: Record<string, string> = {};
+                
+                // Copy all environment variables that are strings
+                for (const [key, value] of Object.entries(process.env)) {
+                    if (value !== undefined) {
+                        env[key] = value;
+                    }
+                }
+                
+                // Add AIRTABLE_API_KEY for AIRTABLE-MCP server
+                if (server.server_name === "AIRTABLE-MCP") {
+                    env.AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY || "your_api_key_here";
+                }
+                
                 const transport = new StdioClientTransport({
                     command: "node",
-                    args: [`${process.cwd()}/../servers/${server.server_name}/${server.path}`]
+                    args: [`${process.cwd()}/../servers/${server.server_name}/${server.path}`],
+                    env: env
                 });
 
                 await newClient.connect(transport).then(() => {

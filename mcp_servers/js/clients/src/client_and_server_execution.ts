@@ -904,6 +904,11 @@ async function CallAndExecuteTool(selected_server:any, server_credentials:any,to
                 "appSecret": server_credentials[selected_server]?.appSecret || "",
             }
             break;
+        case "AIRTABLE-MCP":
+            args["__credentials__"] = {
+                "api_key": server_credentials[selected_server]?.api_key || "",
+            }
+            break;
         default:
             break;
     }

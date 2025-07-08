@@ -28,7 +28,7 @@ async def initialize_all_mcp(exit_stack):
             print(f"Server name        : {server['server_name']}")
             print(f"Server command     : {server['command']}")
             print(f"Server args        : {server['args']}")
-            print(f"cwd                : {os.getcwd()}")
+            print(f"cwd                : {server.getcwd()}")
 
             # Optional directory existence check
             if "--directory" in server["args"]:

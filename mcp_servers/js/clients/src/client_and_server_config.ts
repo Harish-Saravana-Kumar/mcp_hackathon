@@ -11,10 +11,10 @@ export const ServersConfig:any = [
         server_features_and_capability:`WORDPRESS`,
         path : "build/index.js"
     },
-    // {
-    //     server_name :"WORDPRESS",
-    //     server_features_and_capability:`WORDPRESS`,
-    //     path : "build/index.js"
-    // }
+    {
+        server_name :"AIRTABLE-MCP",
+        server_features_and_capability:"Airtable integration via MCP",
+        path : "build/index.js"
+    }
 ]
 
